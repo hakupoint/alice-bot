@@ -3,7 +3,6 @@ package util
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"os"
 	"time"
@@ -62,12 +61,6 @@ func (l *Log) Fatal(msg string, f string) error {
 	})
 }
 func (l *Log) write(i *info) error {
-	txt := []rune(fmt.Sprintf("%+v", i))
-	str := string(txt[1:len(txt)])
-
-	l.cli.Write([]byte(time.Now().String()))
-	l.cli.Write([]byte(str))
-
 	if l.lean == nil {
 		return LeanCloudNotFound
 	}
@@ -75,6 +68,8 @@ func (l *Log) write(i *info) error {
 	if err != nil {
 		return err
 	}
+	l.cli.Write([]byte(time.Now().String()))
+	l.cli.Write(b)
 	l.lean.AddClass("logs", string(b))
 	return nil
 }
