@@ -2,14 +2,35 @@
 
 
 [[projects]]
+  name = "github.com/PuerkitoBio/goquery"
+  packages = ["."]
+  revision = "09540e565986583836b5fc792fe951ec5fd201dd"
+  version = "v1.3.0"
+
+[[projects]]
+  name = "github.com/andybalholm/cascadia"
+  packages = ["."]
+  revision = "901648c87902174f774fac311d7f176f8647bdaa"
+  version = "v1.0.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/hakupoint/leancloud-golang"
   packages = ["."]
   revision = "d49f0d8f7d2665e5a97d7ffc7a0c5e17243b7448"
 
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "html",
+    "html/atom"
+  ]
+  revision = "22ae77b79946ea320088417e4d50825671d82d57"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "55728fe2857cb4e2ae3b49525a1045a4698640511a35e72156a025ad13816c0a"
+  inputs-digest = "dbfac7b13109b03da46e9aec69656aeaea0c16590820b2be6c8873e104cd00ec"
   solver-name = "gps-cdcl"
   solver-version = 1
