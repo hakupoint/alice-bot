@@ -6,18 +6,18 @@ import (
 
 type queue struct {
 	mu    sync.Mutex
-	rule  []*Rule
+	rule  []*Ruler
 	Count int
 }
 
-func (q *queue) enqueue(r *Rule) {
+func (q *queue) enqueue(r *Ruler) {
 	defer q.mu.Unlock()
 	q.mu.Lock()
 	q.rule = append(q.rule, r)
 	q.Count++
 }
 
-func (q *queue) dequeue() *Rule {
+func (q *queue) dequeue() *Ruler {
 	defer q.mu.Unlock()
 	q.mu.Lock()
 	r := q.rule[0]
