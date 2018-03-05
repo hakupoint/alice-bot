@@ -1,3 +1,4 @@
+// 暂时用不到爬虫
 package reptile
 
 import (
@@ -10,13 +11,18 @@ var (
 	NotFoundParse = errors.New("not found url parse rule !")
 )
 
+const (
+	// 爬取的总页数
+	TotalPageNumber = 10
+)
+
 type Reptile struct {
 	Base    *url.URL
 	Rule    *Ruler
-	Deep    int
+	Total   int
 	Failure []*ReptileFail
+	Deep 		int
 	done    func([]*ReptileFail)
-	task    func() error
 }
 
 // 抓取失败结构体
@@ -36,11 +42,16 @@ func NewReptile(u interface{}) *Reptile {
 	}
 	return &Reptile{
 		Base: uri,
+		Deep: 10,
 	}
 }
 
 func (r *Reptile) SetRule(rule *Ruler) {
 	r.Rule = rule
+}
+
+func (r *Reptile) SetTotal(i int) {
+	r.Total = i
 }
 
 func (r *Reptile) SetDone(f func([]*ReptileFail)) {
@@ -51,20 +62,17 @@ func (r *Reptile) Start() error {
 	if r.Rule != nil {
 		return NotFoundParse
 	}
+	for {
+		go func() {
+
+		}()
+		break;
+	}
+
+
 	return nil
+
 }
 func (r *Reptile) Fail(ra *ReptileFail) {
-
-}
-
-func (r *Reptile) NextPage() {
-	defer func() {
-		r.Deep--
-	}()
-
-	if r.Deep == 0 {
-		r.done(r.Failure)
-		return
-	}
 
 }

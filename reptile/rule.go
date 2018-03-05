@@ -11,7 +11,5 @@ type Ruler interface {
 type Reptiler interface {
 	Start() error
 	Done()
-	NextPage()
 	Fail()
-	task()
 }
